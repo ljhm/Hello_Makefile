@@ -8,9 +8,9 @@ install : $(SUBDIRS)
 
 define versioning # version soversion
 	$(MAKE) -C $@ soversion=lib$@.so.$(2)
-	cp $@/$@ $@/lib$@.so.$(1)
-	cd $@; ln -f -s lib$@.so.$(1) lib$@.so.$(2); cd ..
-	cd $@; ln -f -s lib$@.so.$(1) lib$@.so; cd ..
+	@cp $@/$@ $@/lib$@.so.$(1)
+	@cd $@; ln -f -s lib$@.so.$(1) lib$@.so.$(2); cd ..
+	@cd $@; ln -f -s lib$@.so.$(1) lib$@.so; cd ..
 endef
 
 bar :
