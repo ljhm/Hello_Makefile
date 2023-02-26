@@ -9,9 +9,10 @@ LDFLAGS += -Wl,-rpath,'$$ORIGIN/../lib'
 
 # make # NDEBUG=1
 ifdef NDEBUG
-CFLAGS += -O3 -DNDEBUG
+CPPFLAGS += -DNDEBUG
+CFLAGS += -O3 # .cpp
 else
-CFLAGS += -g
+CFLAGS += -g # .cpp
 LDFLAGS += -fsanitize=address
 endif
 
