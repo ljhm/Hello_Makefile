@@ -1,8 +1,18 @@
 #include <stdio.h>
+#include <sanitizer/lsan_interface.h>
+#include <signal.h>
 #include <assert.h>
 #include "foo.h"
 
+void handlerCont(int signum) {
+  printf("SIGCONT %d\n", signum);
+#ifndef NDEBUG
+  __lsan_do_recoverable_leak_check();
+#endif
+}
+
 int main() {
+  signal(SIGCONT, handlerCont); // kill -CONT <pid>
   printf("main1\n");
   foo();
 

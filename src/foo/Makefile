@@ -21,6 +21,7 @@ all : foo # bar
 
 # target name is basename of one of the source files
 foo : $(patsubst %.c,%.o,$(wildcard *.c)) # .cpp
+#bar : $(patsubst %.c,%.o,bar.c) # .cpp
 -include *.d
 clean : ; -rm -fr *.o *.d foo *.so*
 .PHONY : all clean
