@@ -3,21 +3,11 @@ SUBDIRS = main foo
 all : $(SUBDIRS)
 install : $(SUBDIRS)
 
-## makever ##
-# $(call makever,x.y.z,x) # ,version,soname
-# $(call makever,1.2.3,1)
-# version: major.minor.patch
-# soname: equals to the major number
-# backwards compatible within the same major number
-#
-# libfoo.so -> libfoo.so.1.2.3
-# libfoo.so.1 -> libfoo.so.1.2.3
-# libfoo.so.1.2.3
-#
-define makever
-	$(MAKE) -C $@ soname=lib$@.so.$(2)
+# ref: libtool -version-number
+define version_number
+	$(MAKE) -C $@ soname=lib$@.so.$(word 1,$(subst ., ,$(1)))
 	@ cp $@/$@ $@/lib$@.so.$(1)
-	@ cd $@; ln -f -s lib$@.so.$(1) lib$@.so.$(2); cd ..
+	@ cd $@; ln -f -s lib$@.so.$(1) lib$@.so.$(word 1,$(subst ., ,$(1))); cd ..
 	@ cd $@; ln -f -s lib$@.so.$(1) lib$@.so; cd ..
 endef
 
@@ -27,7 +17,7 @@ main :
 	$(MAKE) -C $@
 
 foo :
-	$(call makever,5.2.3,5) # ,version,soname
+	$(call version_number,5.2.3)
 
 # make DESTDIR=~/foo install
 install :
