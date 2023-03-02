@@ -1,8 +1,8 @@
 # build shared library with -fPIC, -shared
 CFLAGS   = # -g -O3 -fPIC # CXXFLAGS for .cpp
-CPPFLAGS = -MMD -MP -I ../foo
-LDFLAGS  = -L ../foo -Wl,-rpath,'$$ORIGIN/../foo' # -shared
-LDLIBS   = -l foo
+CPPFLAGS = -MMD -MP -I../foo
+LDFLAGS  = -L../foo -Wl,-rpath,'$$ORIGIN/../foo' # -shared
+LDLIBS   = -lfoo
 #CC      = $(CXX) # link with CXX for .cpp
 
 LDFLAGS += -Wl,-rpath,'$$ORIGIN/../lib'
