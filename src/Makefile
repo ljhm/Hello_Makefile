@@ -3,7 +3,8 @@ SUBDIRS = main foo
 all : $(SUBDIRS)
 install : $(SUBDIRS)
 
-# ref: libtool -version-number
+# $(call version_number,1.2.3) # major.minor.patch
+# libtool manual chapter 4.2: -version-number
 define version_number
 	$(MAKE) -C $@ soname=lib$@.so.$(word 1,$(subst ., ,$(1)))
 	@ cp $@/$@ $@/lib$@.so.$(1)
