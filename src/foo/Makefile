@@ -1,10 +1,13 @@
+# Makefile for subdir
+
 # build shared library with -fPIC, -shared
 CFLAGS   = -fPIC # -g -O3 # CXXFLAGS for .cpp
 CPPFLAGS = -MMD -MP # -I../bar
-LDFLAGS  = -shared # -L../bar -Wl,-rpath,'$$ORIGIN/../bar'
-LDLIBS   = #-lbar
+LDFLAGS  = -shared # -L../bar
+LDLIBS   = # -lbar
 #CC      = $(CXX) # link with CXX for .cpp
 
+LDFLAGS += -Wl,-rpath,'$$ORIGIN/../bar'
 LDFLAGS += -Wl,-rpath,'$$ORIGIN/../lib'
 LDFLAGS += -Wl,-soname,$(soname)
 

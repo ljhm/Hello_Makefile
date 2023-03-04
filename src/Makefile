@@ -1,7 +1,4 @@
-SUBDIRS = main foo
-
-all : $(SUBDIRS)
-install : $(SUBDIRS)
+# Makefile for top dir
 
 # $(call version_number,1.2.3) # major.minor.patch
 # libtool manual chapter 4.2: -version-number
@@ -12,13 +9,14 @@ define version_number
 	@ cd $@; ln -f -s lib$@.so.$(1) lib$@.so; cd ..
 endef
 
+SUBDIRS = main foo
+
+all : $(SUBDIRS)
+install : $(SUBDIRS)
+
 main : foo
-
-main :
-	$(MAKE) -C $@
-
-foo :
-	$(call version_number,6.2.3)
+main : ; $(MAKE) -C $@
+foo : ; $(call version_number,6.2.3)
 
 # make DESTDIR=~/foo install
 install :
