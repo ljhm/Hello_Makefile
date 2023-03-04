@@ -18,7 +18,7 @@ main :
 	$(MAKE) -C $@
 
 foo :
-	$(call version_number,5.2.3)
+	$(call version_number,6.2.3)
 
 # make DESTDIR=~/foo install
 install :

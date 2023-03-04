@@ -13,7 +13,7 @@ void handlerCont(int signum) {
 
 int main() {
   signal(SIGCONT, handlerCont); // kill -CONT <pid>
-  printf("main\n");
+  printf("main6\n");
   foo();
 
   int a[1024];
