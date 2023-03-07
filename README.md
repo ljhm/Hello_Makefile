@@ -1,2 +1,1 @@
-# Hello_Makefile
-Hello Makefile
+# Makefile-in-source-build
