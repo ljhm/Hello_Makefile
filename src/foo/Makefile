@@ -1,23 +1,23 @@
 # Makefile for subdir
 
 # build shared library with -fPIC, -shared
-CFLAGS   = -fPIC # -g -O3 # CXXFLAGS for .cpp
-CPPFLAGS = -MMD -MP # -I../bar
-LDFLAGS  = -shared # -L../bar
-LDLIBS   = # -lbar
-#CC      = $(CXX) # link with CXX for .cpp
+CFLAGS    = -fPIC # -g -O3 # CXXFLAGS for .cpp
+CPPFLAGS  = -MMD -MP # -I../bar
+LDFLAGS   = -shared # -L../bar
+LDLIBS    = # -lbar
+#CC       = $(CXX) # link with CXX for .cpp
 
-LDFLAGS += -Wl,-rpath,'$$ORIGIN/../bar'
-LDFLAGS += -Wl,-rpath,'$$ORIGIN/../lib'
-LDFLAGS += -Wl,-soname,$(soname)
+LDFLAGS  += -Wl,-rpath,'$$ORIGIN/../bar'
+LDFLAGS  += -Wl,-rpath,'$$ORIGIN/../lib'
+LDFLAGS  += -Wl,-soname,$(soname)
 
 # make # NDEBUG=1
 ifdef NDEBUG
+CFLAGS   += -O3 # .cpp
 CPPFLAGS += -DNDEBUG
-CFLAGS += -O3 # .cpp
 else
-CFLAGS += -g # .cpp
-LDFLAGS += -fsanitize=address
+CFLAGS   += -g # .cpp
+LDFLAGS  += -fsanitize=address
 endif
 
 all : foo # bar
