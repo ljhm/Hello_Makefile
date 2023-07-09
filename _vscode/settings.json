@@ -11,10 +11,10 @@
     "--header-insertion=never",
   ],
   "clangd.fallbackFlags": [
-    // "-std=c++2a",
+    "-std=c++2a",
     "-I../foo",
+    "-I/home/ljh/Downloads/boost_1_82_0",
     "-I/usr/lib/gcc/x86_64-redhat-linux/13/include/",
-
   ],
   "clangd.semanticHighlighting": false,
   "debug.onTaskErrors": "showErrors",
@@ -48,6 +48,9 @@
   "explorer.confirmDragAndDrop": false,
   "explorer.openEditors.sortOrder": "alphabetical",
   "extensions.ignoreRecommendations": true,
+  "files.associations": {
+    "iostream": "cpp"
+  },
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
   "git.autofetch": true,
