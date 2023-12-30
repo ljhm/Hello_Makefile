@@ -5,7 +5,7 @@
   "tasks": [
     {
       "label": "make", //new
-      "type": "shell",
+      "type": "shell", // "cppbuild"
       "options": {
         "cwd": "${workspaceFolder}/src",
       },
