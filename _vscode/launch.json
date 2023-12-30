@@ -5,12 +5,14 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "type": "lldb",
+      "type": "cppdbg", // "lldb",
       "request": "launch",
       "name": "Debug",
       "program": "${fileDirname}/${fileBasenameNoExtension}", //new
       "args": [],
       "cwd": "${fileDirname}",
+      "MIMode": "gdb",
+      "miDebuggerPath": "/usr/bin/gdb",
       "preLaunchTask": "make", //new
     }
   ]
