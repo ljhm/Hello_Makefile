@@ -18,13 +18,12 @@
   "clangd.fallbackFlags": [
     // "-std=c++2a",
     "-I../foo",
-
+    "-I/home/ljh/Downloads/boost_1_82_0",
   ],
   "clangd.semanticHighlighting": false,
   "debug.onTaskErrors": "showErrors",
   "debug.showBreakpointsInOverviewRuler": true,
   "diffEditor.maxComputationTime": 0,
-  "editor.accessibilitySupport": "off",
   "editor.codeLens": false,
   "editor.copyWithSyntaxHighlighting": false,
   "editor.dragAndDrop": false,
@@ -100,6 +99,7 @@
   "vim.overrideCopy": false,
   "vim.wrapscan": false,
   "window.title": "${activeEditorLong}",
+  "workbench.editor.enablePreview": false,
   "workbench.editor.showIcons": false,
   "workbench.editor.empty.hint": "hidden",
   "workbench.iconTheme": null,
