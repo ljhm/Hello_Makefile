@@ -1,15 +1,18 @@
 # Makefile for subdir
 
-# build shared library with -fPIC, -shared
+# link library with -shared and executable with -pie
 CFLAGS    = -fPIC # -g -O3 # CXXFLAGS for .cpp
 CPPFLAGS  = -MMD -MP # -I../bar
-LDFLAGS   = -shared # -L../bar
+LDFLAGS   = -shared # -L../bar -pie
 LDLIBS    = # -lbar
 #CC       = $(CXX) # link with CXX for .cpp
 
 LDFLAGS  += -Wl,-rpath,'$$ORIGIN/../bar'
 LDFLAGS  += -Wl,-rpath,'$$ORIGIN/../lib'
 LDFLAGS  += -Wl,-soname,$(soname)
+
+# turn off sanitizer to build a debug version for gdb
+# LeakSanitizer does not work under ptrace (strace, gdb, etc)
 
 # make # NDEBUG=1
 ifdef NDEBUG

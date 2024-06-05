@@ -25,3 +25,23 @@ int main() {
   // a[n] = 1; // asan
   // assert(0); // -DNDEBUG
 }
+
+
+/*
+
+$ pwd
+/home/ljh/Documents/hello_cpp
+$ ls
+src  _vscode
+$ ls src/
+foo  main
+$ make -C src/foo
+$ cp src/foo src/libfoo.so
+$
+$ make -C src/main
+$ LD_LIBRARY_PATH=src/foo  ./src/main/main
+hello
+foo
+$
+
+*/
