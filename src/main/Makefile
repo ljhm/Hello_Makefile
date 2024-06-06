@@ -1,7 +1,7 @@
 # Makefile for subdir
 
-# link library with -shared and executable with -pie
-CFLAGS    = -fPIC # -g -O3 # CXXFLAGS for .cpp
+# library -fPIC -shared and executable -fPIE -pie
+CFLAGS    = -g -fPIE # -fPIC -O3 # CXXFLAGS for .cpp
 CPPFLAGS  = -MMD -MP -I../foo
 LDFLAGS   = -L../foo -pie # -shared
 LDLIBS    = -lfoo
