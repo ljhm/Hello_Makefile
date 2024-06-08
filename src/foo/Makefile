@@ -9,7 +9,7 @@ LDLIBS    = # -lbar
 
 LDFLAGS  += -Wl,-soname,$(soname)
 #LDFLAGS  += -current_version $(current) -compatibility_version $(compatibility) # macos
-#LDFLAGS += -install_name libfoo.so # macos
+#LDFLAGS += -install_name libfoo.so.$(compatibility) # macos
 
 # make # NDEBUG=1
 ifdef NDEBUG

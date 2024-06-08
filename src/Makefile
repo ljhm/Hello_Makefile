@@ -33,6 +33,7 @@ install :
 	install -d $(DESTDIR)/usr/local/lib
 	install -m 0755 main/main $(DESTDIR)/usr/local/bin
 	cp -P foo/*.so* $(DESTDIR)/usr/local/lib
+#	cp -a foo/*.so* $(DESTDIR)/usr/local/lib # macos
 
 clean :
 	@ for dir in $(SUBDIRS); do \
