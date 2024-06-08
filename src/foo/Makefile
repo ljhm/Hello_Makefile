@@ -8,8 +8,7 @@ LDLIBS    = # -lbar
 #CC       = $(CXX) # link with CXX for .cpp
 
 LDFLAGS  += -Wl,-soname,$(soname)
-#LDFLAGS  += -current_version $(current) -compatibility_version $(compatibility) # macos
-#LDFLAGS += -install_name libfoo.so.$(compatibility) # macos
+#LDFLAGS += -install_name libfoo.so.$(MAJOR) -current_version $(VER) -compatibility_version $(MAJOR) # macos
 
 # make # NDEBUG=1
 ifdef NDEBUG

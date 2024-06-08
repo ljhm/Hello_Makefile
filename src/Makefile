@@ -5,7 +5,7 @@
 # libtool manual: -version-number
 define makever
 	@ $(MAKE) -C $@ soname=lib$@.so.$(word 1,$(subst ., ,$(1)))
-	@ # $(MAKE) -C $@ current=$(1) compatibility=$(word 1,$(subst ., ,$(1))) # macos
+	@ # $(MAKE) -C $@ VER=$(1) MAJOR=$(word 1,$(subst ., ,$(1))) # macos
 
 	@ cp $@/$@ $@/lib$@.so.$(1)
 
@@ -62,6 +62,5 @@ clean :
 # $ make -C src DESTDIR=~/hello install
 #
 # $ DYLD_LIBRARY_PATH=src/foo  ./src/main/main # macos
-# LDFLAGS += -install_name libfoo.so         # macos
-# LDFLAGS += -current_version $(current) -compatibility_version $(compatibility) # macos
+# LDFLAGS += -install_name libfoo.so.$(MAJOR) -current_version $(VER) -compatibility_version $(MAJOR) # macos
 #
