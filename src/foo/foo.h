@@ -1,5 +1,5 @@
-#ifndef _foo_
-#define _foo_
+#ifndef foo_h
+#define foo_h
 
 void foo();
 

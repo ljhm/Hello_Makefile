@@ -5,6 +5,7 @@
 # libtool manual: -version-number
 define makever
 	@ $(MAKE) -C $@ soname=lib$@.so.$(word 1,$(subst ., ,$(1)))
+	@ # $(MAKE) -C $@ current=$(1) compatibility=$(word 1,$(subst ., ,$(1))) # macos
 
 	@ cp $@/$@ $@/lib$@.so.$(1)
 
@@ -38,3 +39,28 @@ clean :
 		$(MAKE) -C $$dir $@; \
 	done
 .PHONY : $(SUBDIRS) all install clean
+
+
+#
+# do not use rpath: https://wiki.debian.org/RpathIssue ,
+#
+# $ pwd
+# /home/ljh/Documents/hello_c
+# $ ls
+# src  _vscode
+# $ ls src/
+# Makefile  foo  main
+# $
+# $ make -C src
+# $ cp src/foo/foo src/foo/libfoo.so
+# $ make -C src
+# $
+# $ LD_LIBRARY_PATH=src/foo  ./src/main/main
+# hello
+# foo
+# $ make -C src DESTDIR=~/hello install
+#
+# $ DYLD_LIBRARY_PATH=src/foo  ./src/main/main # macos
+# LDFLAGS += -install_name libfoo.so         # macos
+# LDFLAGS += -current_version $(current) -compatibility_version $(compatibility) # macos
+#

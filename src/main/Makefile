@@ -1,18 +1,15 @@
 # Makefile for subdir
 
-# library -fPIC -shared and executable -fPIE -pie
+# executable -fPIE -pie and library -fPIC -shared
 CFLAGS    = -g -fPIE # -fPIC -O3 # CXXFLAGS for .cpp
 CPPFLAGS  = -MMD -MP -I../foo
 LDFLAGS   = -L../foo -pie # -shared
 LDLIBS    = -lfoo
 #CC       = $(CXX) # link with CXX for .cpp
 
-LDFLAGS  += -Wl,-rpath,'$$ORIGIN/../foo'
-LDFLAGS  += -Wl,-rpath,'$$ORIGIN/../lib'
 #LDFLAGS += -Wl,-soname,$(soname)
-
-# turn off sanitizer to build a debug version for gdb
-# LeakSanitizer does not work under ptrace (strace, gdb, etc)
+#LDFLAGS  += -current_version $(current) -compatibility_version $(compatibility) # macos
+#LDFLAGS += -install_name libfoo.so # macos
 
 # make # NDEBUG=1
 ifdef NDEBUG
