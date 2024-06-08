@@ -4,7 +4,7 @@
 # major.minor.patch
 # libtool manual: -version-number
 define makever
-	@ $(MAKE) -C $@ soname=lib$@.so.$(word 1,$(subst ., ,$(1)))
+	@ $(MAKE) -C $@ MAJOR=lib$@.so.$(word 1,$(subst ., ,$(1)))
 	@ # $(MAKE) -C $@ VER=$(1) MAJOR=$(word 1,$(subst ., ,$(1))) # macos
 
 	@ cp $@/$@ $@/lib$@.so.$(1)

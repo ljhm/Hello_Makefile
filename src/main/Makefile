@@ -7,7 +7,7 @@ LDFLAGS   = -L../foo -pie # -shared
 LDLIBS    = -lfoo
 #CC       = $(CXX) # link with CXX for .cpp
 
-#LDFLAGS += -Wl,-soname,$(soname)
+#LDFLAGS += -Wl,-soname,$(MAJOR)
 #LDFLAGS += -install_name libfoo.so.$(MAJOR) -current_version $(VER) -compatibility_version $(MAJOR) # macos
 
 # make # NDEBUG=1
