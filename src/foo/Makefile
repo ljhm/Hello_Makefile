@@ -15,7 +15,7 @@ ifdef NDEBUG
 CFLAGS   += -O3 # .cpp
 CPPFLAGS += -DNDEBUG
 else
-CFLAGS   += -g # .cpp
+CFLAGS   += -fsanitize=address -g # .cpp
 LDFLAGS  += -fsanitize=address
 endif
 
